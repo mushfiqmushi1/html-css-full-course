@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- 10 - Positioning
+     Lesson: taking elements out of normal flow + stacking with z-index. -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 - Positioning</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: sans-serif; max-width: 700px; margin: 20px; }
+
+        .stage {
+            position: relative;       /* creates a positioning context for children */
+            height: 220px;
+            background: #f1f5f9;
+            border: 2px dashed #94a3b8;
+            margin-bottom: 24px;
+            border-radius: 8px;
+        }
+        .box {
+            width: 90px; height: 90px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: bold;
+        }
+
+        /* static (default): normal flow, top/left do NOTHING */
+        .static { position: static; background: #64748b; }
+
+        /* relative: offset FROM its normal position, keeps its space */
+        .relative { position: relative; top: 20px; left: 30px; background: #0ea5e9; }
+
+        /* absolute: removed from flow, positioned vs nearest POSITIONED ancestor
+           (that's why .stage has position:relative — otherwise it'd use the page!) */
+        .absolute { position: absolute; top: 10px; right: 10px; background: #7c3aed; }
+        .absolute-bl { position: absolute; bottom: 10px; left: 10px; background: #16a34a; }
+
+        /* fixed: vs the VIEWPORT — stays put while scrolling */
+        .fixed {
+            position: fixed; bottom: 20px; right: 20px;
+            background: #dc2626; z-index: 100;
+        }
+
+        /* sticky: acts relative until you scroll past it, then sticks */
+        .sticky {
+            position: sticky; top: 0;
+            background: #f59e0b; padding: 12px; border-radius: 8px;
+            z-index: 50;
+        }
+
+        /* z-index: bigger number = painted on top (only works on positioned elements) */
+        .z1 { position: absolute; top: 60px; left: 60px; background: #0ea5e9; z-index: 1; }
+        .z2 { position: absolute; top: 90px; left: 90px; background: #7c3aed; z-index: 2; }
+        .z3 { position: absolute; top: 120px; left: 120px; background: #16a34a; z-index: 3; }
+
+        .spacer { height: 400px; background: repeating-linear-gradient(45deg, #f8fafc, #f8fafc 20px, #e2e8f0 20px, #e2e8f0 40px); border-radius: 8px; margin: 16px 0; }
+    </style>
+</head>
+
+<body>
+
+    <h1>Positioning</h1>
+
+    <h2>static vs relative</h2>
+    <div class="stage">
+        <div class="box static">static</div>
+        <div class="box relative">relative<br>(+20/+30)</div>
+    </div>
+
+    <h2>absolute (inside a relative parent)</h2>
+    <div class="stage">
+        <div class="box absolute">top-right</div>
+        <div class="box absolute-bl">bottom-left</div>
+    </div>
+
+    <h2>sticky header</h2>
+    <div class="sticky">I stick to the top when you scroll past me ↓</div>
+    <div class="spacer"></div>
+    <p>Scroll up — the orange bar stuck to the top. That's sticky.</p>
+
+    <h2>z-index (stacking)</h2>
+    <div class="stage">
+        <div class="box z1">z:1</div>
+        <div class="box z2">z:2</div>
+        <div class="box z3">z:3</div>
+    </div>
+
+    <div class="box fixed">fixed<br>(scroll!)</div>
+
+    <p><strong>Key takeaways:</strong> absolute positions vs the nearest
+       <em>positioned</em> ancestor; fixed vs viewport; sticky for headers;
+       z-index controls stacking.</p>
+
+    <!-- Next: 11_responsive_design.html -->
+</body>
+
+</html>

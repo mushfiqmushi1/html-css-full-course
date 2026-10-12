@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- 03 - Tables
+     Lesson: table structure, headers, colspan, rowspan. -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 - Tables</title>
+    <!-- A tiny bit of CSS just so the tables are readable (full CSS starts in lesson 06) -->
+    <style>
+        table { border-collapse: collapse; margin-bottom: 24px; }
+        th, td { border: 1px solid #333; padding: 8px 14px; }
+        th { background: #eee; }
+    </style>
+</head>
+
+<body>
+
+    <h1>Tables</h1>
+    <p>Tables are for <strong>tabular data</strong> — never for page layout
+       (layout is CSS's job, lessons 08–09).</p>
+
+    <!-- Basic anatomy:
+         table  = the whole table
+         tr     = table ROW
+         th     = header CELL (bold + centered by default)
+         td     = data CELL
+         caption = table title, thead/tbody/tfoot = semantic sections -->
+    <h2>Basic table</h2>
+    <table>
+        <caption>Student scores</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Python</th>
+                <th>HTML</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Mushi</td>
+                <td>95</td>
+                <td>88</td>
+            </tr>
+            <tr>
+                <td>Tahmi</td>
+                <td>90</td>
+                <td>92</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Average</td>
+                <td>92.5</td>
+                <td>90</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <!-- colspan = cell stretches across multiple COLUMNS -->
+    <h2>colspan (merge columns)</h2>
+    <table>
+        <tr>
+            <th colspan="2">Full name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>Mushi</td>
+            <td>Rahman</td>
+            <td>20</td>
+        </tr>
+    </table>
+
+    <!-- rowspan = cell stretches across multiple ROWS -->
+    <h2>rowspan (merge rows)</h2>
+    <table>
+        <tr>
+            <th>Day</th>
+            <th>Task</th>
+        </tr>
+        <tr>
+            <td rowspan="2">Monday</td>
+            <td>Learn HTML</td>
+        </tr>
+        <tr>
+            <td>Practice tables</td>
+        </tr>
+    </table>
+
+    <!-- scope="col" / "row" tells screen readers which cells a header describes -->
+    <h2>Accessible headers with scope</h2>
+    <table>
+        <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+        </tr>
+        <tr>
+            <th scope="row">Book</th>
+            <td>$10</td>
+        </tr>
+        <tr>
+            <th scope="row">Pen</th>
+            <td>$2</td>
+        </tr>
+    </table>
+
+    <p><strong>Key takeaways:</strong> tr = row, th = header, td = data;
+       colspan/rowspan merge cells; tables are for data, not layout.</p>
+
+    <!-- Next: 04_forms.html -->
+</body>
+
+</html>

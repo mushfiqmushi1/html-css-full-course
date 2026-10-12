@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- 02 - Text, Links & Images
+     Lesson: text formatting, lists, hyperlinks, images. -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 - Text, Links & Images</title>
+</head>
+
+<body>
+
+    <h1>Text Formatting</h1>
+
+    <!-- FORMATTING TAGS: prefer the semantic ones (strong/em) over visual ones (b/i) -->
+    <p><strong>strong</strong> = important (bold) &nbsp;|&nbsp; <b>b</b> = just bold</p>
+    <p><em>em</em> = emphasized (italic) &nbsp;|&nbsp; <i>i</i> = just italic</p>
+    <p><u>u</u> = underline &nbsp;|&nbsp; <mark>mark</mark> = highlighted</p>
+    <p><del>del</del> = deleted &nbsp;|&nbsp; <ins>ins</ins> = inserted</p>
+    <p>Water is H<sub>2</sub>O &nbsp;|&nbsp; E = mc<sup>2</sup> (sub/sup for sub &amp; superscript)</p>
+    <p><code>code</code> = inline code &nbsp;|&nbsp; <kbd>Ctrl</kbd>+<kbd>C</kbd> = keyboard keys</p>
+
+    <!-- &nbsp; &amp; etc. are HTML entities — special characters written safely -->
+
+    <h2>Quotations</h2>
+    <blockquote>"The best way to learn HTML is to build things." — wise developer</blockquote>
+    <p>As the saying goes, <q>practice makes perfect</q> (q = inline quote).</p>
+
+    <hr>
+
+    <h1>Lists</h1>
+
+    <!-- UNORDERED list: bullet points -->
+    <h2>Shopping list (ul)</h2>
+    <ul>
+        <li>Apples</li>
+        <li>Bread</li>
+        <li>Milk</li>
+    </ul>
+
+    <!-- ORDERED list: numbered, great for steps -->
+    <h2>How to make tea (ol)</h2>
+    <ol>
+        <li>Boil water</li>
+        <li>Add tea leaves</li>
+        <li>Pour and enjoy</li>
+    </ol>
+
+    <!-- type attribute changes numbering: 1, A, a, I, i -->
+    <ol type="A">
+        <li>First</li>
+        <li>Second</li>
+    </ol>
+
+    <!-- DESCRIPTION list: term + definition pairs -->
+    <dl>
+        <dt>HTML</dt>
+        <dd>HyperText Markup Language — structures the page</dd>
+        <dt>CSS</dt>
+        <dd>Cascading Style Sheets — styles the page</dd>
+    </dl>
+
+    <!-- Lists can nest -->
+    <ul>
+        <li>Frontend
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+            </ul>
+        </li>
+        <li>Backend</li>
+    </ul>
+
+    <hr>
+
+    <h1>Links</h1>
+
+    <!-- ANCHOR tag: href = destination. Absolute URL for other sites. -->
+    <p><a href="https://eonha.com">Visit eonha.com</a></p>
+
+    <!-- target="_blank" opens in a new tab. rel="noopener" is a security best practice with it. -->
+    <p><a href="https://github.com" target="_blank" rel="noopener">GitHub (new tab)</a></p>
+
+    <!-- Relative link: points to another file in the SAME folder -->
+    <p><a href="01_html_basics.html">Back to lesson 01</a></p>
+
+    <!-- Anchor link: jumps to an element with that id on the page -->
+    <p><a href="#top-tip">Jump to the tip below</a></p>
+
+    <!-- Email & phone links -->
+    <p><a href="mailto:hello@example.com">Email me</a> |
+       <a href="tel:+8801000000000">Call me</a></p>
+
+    <hr>
+
+    <h1>Images</h1>
+
+    <!-- img is a void element. src = file path, alt = text if image fails + for screen readers.
+         ALWAYS write alt text — it's accessibility, not decoration. -->
+    <p>Placeholder image (from an external service):</p>
+    <img src="https://via.placeholder.com/300x150" alt="A 300x150 placeholder image" width="300">
+
+    <p>Image as a link (click the image):</p>
+    <a href="https://eonha.com">
+        <img src="https://via.placeholder.com/150" alt="Visit eonha.com" width="150">
+    </a>
+
+    <!-- width/height in HTML reserve space so the page doesn't jump while loading.
+         In real projects, size images with CSS instead (lesson 06+). -->
+
+    <h2 id="top-tip">Tip</h2>
+    <p><strong>Key takeaways:</strong> strong/em over b/i, ul for bullets, ol for steps,
+       a+href for links, img always needs alt text.</p>
+
+    <!-- Next: 03_tables.html -->
+</body>
+
+</html>

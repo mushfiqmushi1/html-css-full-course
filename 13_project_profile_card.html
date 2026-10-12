@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- 13 - PROJECT: Profile Card
+     A complete component using: box model, flexbox, positioning, transitions.
+     Challenge: rebuild this from scratch without looking! -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card Project</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            /* Center the card on the page */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            width: 340px;
+            border-radius: 20px;
+            overflow: hidden;              /* clips the banner's corners */
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-8px); }
+
+        .banner {
+            height: 120px;
+            background: linear-gradient(90deg, #7c3aed, #ec4899);
+        }
+
+        /* Negative margin pulls the avatar up over the banner */
+        .avatar {
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: -55px auto 12px;
+            display: block;
+            background: #e2e8f0;
+        }
+
+        .name { font-size: 1.5rem; }
+        .role { color: #7c3aed; font-weight: 600; margin: 4px 0 12px; }
+        .bio { color: #64748b; padding: 0 24px; line-height: 1.6; }
+
+        /* Stats row: flexbox, dividers via border */
+        .stats {
+            display: flex;
+            margin: 20px 0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .stat { flex: 1; padding: 14px 0; }
+        .stat + .stat { border-left: 1px solid #e2e8f0; }
+        .stat strong { display: block; font-size: 1.2rem; }
+        .stat span { color: #94a3b8; font-size: 0.85rem; }
+
+        .actions { display: flex; gap: 12px; padding: 0 24px 24px; }
+        .btn {
+            flex: 1; padding: 12px; border-radius: 10px;
+            font-weight: 600; cursor: pointer; border: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-primary { background: #7c3aed; color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(124,58,237,.4); }
+        .btn-ghost { background: #f1f5f9; color: #334155; }
+        .btn-ghost:hover { background: #e2e8f0; }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="banner"></div>
+        <img class="avatar" src="https://via.placeholder.com/110" alt="Profile photo of Mushi">
+        <h2 class="name">Mushi Rahman</h2>
+        <p class="role">Full-Stack Developer</p>
+        <p class="bio">I build AI chat platforms and learn something new every single day.</p>
+
+        <div class="stats">
+            <div class="stat"><strong>48</strong><span>Projects</span></div>
+            <div class="stat"><strong>12k</strong><span>Followers</span></div>
+            <div class="stat"><strong>96</strong><span>Following</span></div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary">Follow</button>
+            <button class="btn btn-ghost">Message</button>
+        </div>
+    </div>
+
+    <!-- Next: 14_project_landing_page.html -->
+</body>
+
+</html>

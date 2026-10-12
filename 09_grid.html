@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- 09 - CSS Grid
+     Lesson: two-dimensional layouts — page structures, galleries. -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09 - CSS Grid</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: sans-serif; max-width: 800px; margin: 20px; }
+
+        .grid {
+            display: grid;
+            gap: 10px;
+            background: #f1f5f9;
+            padding: 10px;
+            margin-bottom: 24px;
+        }
+        .cell {
+            background: #0ea5e9; color: white;
+            padding: 20px; border-radius: 8px; text-align: center;
+        }
+
+        /* --- basic columns: fr = fraction of free space --- */
+        .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+        .cols-mixed { grid-template-columns: 200px 1fr 1fr; } /* fixed + flexible */
+
+        /* --- repeat() shorthand --- */
+        .cols-repeat { grid-template-columns: repeat(4, 1fr); }
+
+        /* --- spanning: an item covering multiple tracks --- */
+        .span-demo { grid-template-columns: repeat(3, 1fr); }
+        .span-2 { grid-column: span 2; background: #7c3aed; }
+        .span-row { grid-row: span 2; background: #16a34a; }
+
+        /* --- named areas: draw your layout as ASCII art! --- */
+        .areas {
+            grid-template-columns: 1fr 3fr;
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+        }
+        .areas .h { grid-area: header; background: #1e1e2e; }
+        .areas .s { grid-area: sidebar; background: #f59e0b; }
+        .areas .m { grid-area: main; background: #e2e8f0; color: #111; min-height: 100px; }
+        .areas .f { grid-area: footer; background: #1e1e2e; }
+
+        /* --- auto-fit + minmax: responsive grid with ZERO media queries --- */
+        .auto {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+        /* Translation: "fit as many 150px+ columns as possible; stretch to fill."
+           Resize the browser to watch it reflow! */
+
+        /* --- alignment inside the grid --- */
+        .align { grid-template-columns: repeat(3, 1fr); height: 140px; }
+        .align .cell:nth-child(1) { justify-self: start; align-self: start; }
+        .align .cell:nth-child(2) { justify-self: center; align-self: center; }
+        .align .cell:nth-child(3) { justify-self: end; align-self: end; }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Grid</h1>
+    <p>Grid = two-dimensional layout (rows AND columns at once).
+       Rule of thumb: <strong>Flexbox</strong> for components in a line,
+       <strong>Grid</strong> for overall page structure.</p>
+
+    <h2>3 equal columns (1fr 1fr 1fr)</h2>
+    <div class="grid cols-3">
+        <div class="cell">1</div><div class="cell">2</div><div class="cell">3</div>
+        <div class="cell">4</div><div class="cell">5</div><div class="cell">6</div>
+    </div>
+
+    <h2>Spanning cells</h2>
+    <div class="grid span-demo">
+        <div class="cell span-2">spans 2 columns</div>
+        <div class="cell">x</div>
+        <div class="cell span-row">spans 2 rows</div>
+        <div class="cell">x</div>
+        <div class="cell">x</div>
+    </div>
+
+    <h2>Named areas — page layout</h2>
+    <div class="grid areas">
+        <div class="cell h">header</div>
+        <div class="cell s">sidebar</div>
+        <div class="cell m">main</div>
+        <div class="cell f">footer</div>
+    </div>
+
+    <h2>Responsive auto-grid (no media queries!)</h2>
+    <div class="grid auto">
+        <div class="cell">A</div><div class="cell">B</div><div class="cell">C</div>
+        <div class="cell">D</div><div class="cell">E</div><div class="cell">F</div>
+    </div>
+
+    <h2>Aligning individual items</h2>
+    <div class="grid align">
+        <div class="cell">start</div>
+        <div class="cell">center</div>
+        <div class="cell">end</div>
+    </div>
+
+    <p><strong>Key takeaways:</strong> fr units share space;
+       grid-template-areas draws layouts; auto-fit + minmax() = free responsiveness.</p>
+
+    <!-- Next: 10_positioning.html -->
+</body>
+
+</html>

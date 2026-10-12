@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- 06 - CSS Basics
+     Lesson: 3 ways to add CSS, selectors, colors, units, the cascade. -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 - CSS Basics</title>
+
+    <!-- METHOD 2 — INTERNAL CSS: <style> in the head. Good for single-page demos
+         (like every file in this course). -->
+    <style>
+        /* ---------- SELECTORS: how you TARGET elements ---------- */
+
+        /* Element selector: styles ALL <p> tags */
+        p { color: #333; }
+
+        /* Class selector (.name): reusable — use for styling! */
+        .highlight { background: yellow; }
+
+        /* ID selector (#name): unique — one element per page */
+        #special { color: crimson; font-weight: bold; }
+
+        /* Descendant: any <strong> INSIDE .card */
+        .card strong { color: #7c3aed; }
+
+        /* Grouping: same style, multiple selectors */
+        h1, h2 { font-family: Georgia, serif; }
+
+        /* Pseudo-classes: style by STATE */
+        a:hover { color: red; }              /* mouse over */
+        li:first-child { font-weight: bold; } /* first item */
+        li:nth-child(2) { color: teal; }      /* second item */
+        input:focus { outline: 2px solid blue; }
+
+        /* ---------- COLORS: 4 ways to say the same red ---------- */
+        .c1 { color: red; }                    /* named */
+        .c2 { color: #ff0000; }                /* hex (most common) */
+        .c3 { color: rgb(255, 0, 0); }         /* rgb */
+        .c4 { color: hsl(0, 100%, 50%); }      /* hsl: hue, saturation, lightness */
+        .c5 { color: rgba(255, 0, 0, 0.5); }   /* a = alpha = transparency */
+
+        /* ---------- UNITS ---------- */
+        .px-demo  { font-size: 16px; }  /* px: fixed, exact */
+        .pct-demo { width: 50%; }       /* %: relative to parent */
+        .em-demo  { font-size: 1.5em; } /* em: relative to PARENT's font-size (compounds!) */
+        .rem-demo { font-size: 1.5rem; }/* rem: relative to ROOT (html) font-size — predictable */
+        .vw-demo  { width: 50vw; }      /* vw/vh: % of VIEWPORT width/height */
+
+        /* ---------- THE CASCADE: later + more specific wins ---------- */
+        .box { color: blue; }   /* specificity: 0-1-0 */
+        .box { color: green; }  /* same specificity, LATER rule wins -> green */
+        #unique-box { color: purple; } /* ID (1-0-0) beats any number of classes */
+    </style>
+
+    <!-- METHOD 3 — EXTERNAL CSS: <link> to a .css file.
+         Best for real projects (one stylesheet shared by all pages).
+    <link rel="stylesheet" href="styles.css">  -->
+</head>
+
+<body>
+
+    <h1>CSS Basics</h1>
+
+    <!-- METHOD 1 — INLINE CSS: style="" attribute. Quick tests only —
+         hard to maintain, avoid in real projects. -->
+    <p style="color: orange;">This paragraph uses INLINE css (style attribute).</p>
+
+    <p class="highlight">This one uses a CLASS (.highlight).</p>
+    <p id="special">This one uses an ID (#special).</p>
+
+    <div class="card">
+        <p>Normal text, but <strong>this strong is purple</strong>
+           because of the .card strong selector.</p>
+    </div>
+
+    <h2>Colors</h2>
+    <p class="c1">named: red</p>
+    <p class="c2">hex: #ff0000</p>
+    <p class="c3">rgb(255, 0, 0)</p>
+    <p class="c4">hsl(0, 100%, 50%)</p>
+    <p class="c5">rgba with 50% transparency</p>
+
+    <h2>Pseudo-classes</h2>
+    <p><a href="#">Hover over this link</a></p>
+    <ul>
+        <li>First (bold via :first-child)</li>
+        <li>Second (teal via :nth-child(2))</li>
+        <li>Third</li>
+    </ul>
+    <p><input placeholder="Click me to see :focus"></p>
+
+    <h2>The cascade</h2>
+    <p class="box">Green — the later .box rule won.</p>
+    <p class="box" id="unique-box">Purple — the ID beat both classes.</p>
+
+    <!-- SPECIFICITY CHEAT SHEET (higher wins):
+         inline style (1000) > ID (100) > class/pseudo-class (10) > element (1)
+         !important beats everything — but avoid it, it creates wars. -->
+
+    <p><strong>Key takeaways:</strong> style with CLASSES, not IDs;
+       rem for font sizes; understand the cascade before fighting it.</p>
+
+    <!-- Next: 07_box_model.html -->
+</body>
+
+</html>

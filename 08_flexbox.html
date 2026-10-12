@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!-- 08 - Flexbox
+     Lesson: one-dimensional layouts — navbars, card rows, centering. -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08 - Flexbox</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: sans-serif; max-width: 800px; margin: 20px; }
+
+        .container {
+            display: flex;              /* children become flex items in a ROW */
+            gap: 10px;                  /* space between items (modern, clean) */
+            background: #f1f5f9;
+            padding: 10px;
+            margin-bottom: 24px;
+        }
+        .item {
+            background: #7c3aed; color: white;
+            padding: 20px; border-radius: 8px; text-align: center;
+        }
+
+        /* --- justify-content: MAIN axis (horizontal in a row) --- */
+        .jc-start   { justify-content: flex-start; }
+        .jc-center  { justify-content: center; }
+        .jc-end     { justify-content: flex-end; }
+        .jc-between { justify-content: space-between; } /* first/last at edges */
+        .jc-around  { justify-content: space-around; }
+        .jc-evenly  { justify-content: space-evenly; }
+
+        /* --- align-items: CROSS axis (vertical in a row) --- */
+        .tall { align-items: stretch; min-height: 120px; }
+        .tall .item:nth-child(2) { padding-top: 40px; }
+        .ai-center { align-items: center; min-height: 120px; }
+        .ai-start  { align-items: flex-start; min-height: 120px; }
+        .ai-end    { align-items: flex-end; min-height: 120px; }
+
+        /* --- flex-direction --- */
+        .column { flex-direction: column; }
+
+        /* --- flex-wrap: allow items to flow to next line --- */
+        .wrap { flex-wrap: wrap; }
+        .wrap .item { flex: 1 1 150px; } /* grow | shrink | base width */
+
+        /* --- flex-grow: share leftover space --- */
+        .grow-demo .item:nth-child(1) { flex-grow: 1; }
+        .grow-demo .item:nth-child(2) { flex-grow: 2; } /* takes twice the space */
+        .grow-demo .item:nth-child(3) { flex-grow: 1; }
+
+        /* --- THE centering trick (memorize this!) --- */
+        .perfect-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            background: #1e1e2e; color: white; border-radius: 12px;
+        }
+
+        /* --- Real example: navbar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111827; color: white;
+            padding: 12px 24px; border-radius: 12px;
+        }
+        .navbar .links { display: flex; gap: 20px; }
+        .navbar a { color: white; text-decoration: none; }
+    </style>
+</head>
+
+<body>
+
+    <h1>Flexbox</h1>
+    <p>Flexbox = one-dimensional layout (a row OR a column).
+       Two axes to remember: <strong>main</strong> (justify-content)
+       and <strong>cross</strong> (align-items).</p>
+
+    <h2>justify-content (main axis)</h2>
+    <div class="container jc-between">
+        <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+    </div>
+
+    <h2>align-items (cross axis)</h2>
+    <div class="container ai-center">
+        <div class="item">short</div>
+        <div class="item" style="padding:40px 20px">tall</div>
+        <div class="item">short</div>
+    </div>
+
+    <h2>Perfect centering (both axes)</h2>
+    <div class="perfect-center"><strong>I'm perfectly centered</strong></div>
+
+    <h2>flex-grow: proportional widths</h2>
+    <div class="container grow-demo">
+        <div class="item">1x</div><div class="item">2x</div><div class="item">1x</div>
+    </div>
+
+    <h2>flex-wrap: responsive rows</h2>
+    <p>Resize the browser — items wrap instead of overflowing:</p>
+    <div class="container wrap">
+        <div class="item">A</div><div class="item">B</div><div class="item">C</div>
+        <div class="item">D</div><div class="item">E</div><div class="item">F</div>
+    </div>
+
+    <h2>Real example: navbar</h2>
+    <nav class="navbar">
+        <strong>MySite</strong>
+        <div class="links">
+            <a href="#">Home</a><a href="#">About</a><a href="#">Contact</a>
+        </div>
+        <a href="#">Login</a>
+    </nav>
+
+    <p><strong>Key takeaways:</strong> display:flex on the PARENT;
+       justify-content = main axis, align-items = cross axis;
+       flex: 1 makes items share space.</p>
+
+    <!-- Next: 09_grid.html -->
+</body>
+
+</html>

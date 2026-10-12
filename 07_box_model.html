@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- 07 - The Box Model
+     Lesson: every element is a box: content + padding + border + margin. -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07 - Box Model</title>
+    <style>
+        /* box-sizing: border-box makes width INCLUDE padding & border.
+           Without it, width:200px + padding:20px = 240px wide (surprise!).
+           Put this at the top of EVERY project. */
+        * { box-sizing: border-box; }
+
+        body { font-family: sans-serif; max-width: 700px; margin: 20px; }
+
+        .demo {
+            width: 200px;
+            background: #dbeafe;
+            /* padding = space INSIDE the box, between content and border */
+            padding: 20px;
+            /* border = the visible edge: width style color */
+            border: 5px solid #2563eb;
+            /* margin = space OUTSIDE the box, pushes neighbors away */
+            margin: 20px;
+        }
+
+        .no-box-sizing { box-sizing: content-box; background: #fee2e2; }
+        /* content-box (the default): width counts ONLY the content.
+           200 + 20+20 padding + 5+5 border = 250px actual width! */
+
+        /* Margin shorthand: TRBL — Top Right Bottom Left (clockwise) */
+        .m1 { margin: 10px; }                    /* all sides */
+        .m2 { margin: 10px 20px; }              /* vertical | horizontal */
+        .m3 { margin: 10px 20px 30px; }         /* top | horizontal | bottom */
+        .m4 { margin: 10px 20px 30px 40px; }    /* top right bottom left */
+        /* Same shorthand works for padding. */
+
+        /* margin: 0 auto centers a BLOCK element horizontally
+           (needs a set width + auto left/right margins) */
+        .centered {
+            width: 300px;
+            margin: 20px auto;
+            background: #dcfce7;
+            padding: 16px;
+            text-align: center;
+        }
+
+        /* Margins COLLAPSE: two stacked 20px margins = 20px gap, not 40px.
+           Only vertical margins collapse; padding/borders never do. */
+        .collapse-a { background: #fef3c7; margin-bottom: 20px; padding: 8px; }
+        .collapse-b { background: #fef3c7; margin-top: 20px; padding: 8px; }
+
+        /* display: block vs inline vs inline-block */
+        .d-block { display: block; background: #e0e7ff; margin: 4px 0; }
+        .d-inline { display: inline; background: #fde68a; }
+        /* inline ignores width/height and vertical margin! */
+        .d-inline-block {
+            display: inline-block; width: 120px; height: 60px;
+            background: #bbf7d0; margin: 4px; vertical-align: top;
+        }
+        /* inline-block = flows like text BUT respects width/height. */
+    </style>
+</head>
+
+<body>
+
+    <h1>The Box Model</h1>
+
+    <div class="demo">
+        content-box demo: width 200px + padding 20px + border 5px
+    </div>
+    <div class="demo no-box-sizing">
+        WITHOUT border-box: this box is actually 250px wide!
+    </div>
+
+    <h2>Centering with margin: auto</h2>
+    <div class="centered">I'm centered (margin: 0 auto)</div>
+
+    <h2>Margin collapse</h2>
+    <div class="collapse-a">margin-bottom: 20px</div>
+    <div class="collapse-b">margin-top: 20px — gap between us is 20px, not 40px!</div>
+
+    <h2>display: block vs inline vs inline-block</h2>
+    <div class="d-block">block: full width, own line</div>
+    <div class="d-block">another block</div>
+    <p>
+        <span class="d-inline">inline: flows in text,</span>
+        <span class="d-inline">ignores width/height.</span>
+    </p>
+    <div>
+        <span class="d-inline-block">inline-block 1</span>
+        <span class="d-inline-block">inline-block 2</span>
+        <span class="d-inline-block">inline-block 3</span>
+    </div>
+
+    <p><strong>Key takeaways:</strong> always start with
+       <code>* { box-sizing: border-box; }</code>; padding = inside,
+       margin = outside; <code>margin: 0 auto</code> centers blocks.</p>
+
+    <!-- Next: 08_flexbox.html -->
+</body>
+
+</html>

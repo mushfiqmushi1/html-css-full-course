@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- 05 - Semantic HTML & Media
+     Lesson: meaningful structure (not div-soup), audio, video, iframes. -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 - Semantic HTML & Media</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; }
+        header, nav, main, footer { padding: 16px 24px; }
+        header { background: #1e1e2e; color: white; }
+        nav { background: #eee; }
+        nav a { margin-right: 16px; }
+        footer { background: #1e1e2e; color: white; }
+    </style>
+</head>
+
+<body>
+
+    <!-- SEMANTIC TAGS describe WHAT content is — better for SEO & screen readers
+         than a page full of meaningless <div>s. -->
+
+    <header>
+        <!-- header = introductory content: logo, site title -->
+        <h1>My Blog</h1>
+        <p>Thoughts on code &amp; design</p>
+    </header>
+
+    <nav>
+        <!-- nav = major navigation links -->
+        <a href="#">Home</a>
+        <a href="#">Articles</a>
+        <a href="#">About</a>
+    </nav>
+
+    <main>
+        <!-- main = the ONE dominant content area of the page -->
+
+        <article>
+            <!-- article = self-contained piece: blog post, news item -->
+            <h2>Why semantic HTML matters</h2>
+            <p>Posted on <time datetime="2026-10-12">Oct 12, 2026</time></p>
+            <p>Screen readers and search engines understand
+               <code>&lt;article&gt;</code> but learn nothing from
+               <code>&lt;div class="article"&gt;</code>.</p>
+
+            <section>
+                <!-- section = thematic grouping inside a larger piece -->
+                <h3>Common semantic tags</h3>
+                <ul>
+                    <li><code>header</code> / <code>footer</code> — top &amp; bottom</li>
+                    <li><code>nav</code> — navigation</li>
+                    <li><code>main</code> — primary content (one per page)</li>
+                    <li><code>article</code> — independent content</li>
+                    <li><code>section</code> — grouped content</li>
+                    <li><code>aside</code> — sidebar / tangential content</li>
+                    <li><code>figure</code> + <code>figcaption</code> — image with caption</li>
+                </ul>
+            </section>
+        </article>
+
+        <aside>
+            <!-- aside = related but separate: sidebars, pull quotes -->
+            <h3>About the author</h3>
+            <p>Writes about web development.</p>
+        </aside>
+
+        <section>
+            <h2>Media</h2>
+
+            <!-- FIGURE: image + caption, semantically linked -->
+            <figure>
+                <img src="https://via.placeholder.com/400x200" alt="Demo image" width="400">
+                <figcaption>Fig 1. — a demo image with a proper caption</figcaption>
+            </figure>
+
+            <!-- AUDIO: controls = play/pause UI. Provide multiple formats for compatibility. -->
+            <h3>Audio</h3>
+            <audio controls>
+                <source src="sample.mp3" type="audio/mpeg">
+                Your browser does not support audio. (No sample.mp3 file here — that's fine,
+                this shows the markup pattern.)
+            </audio>
+
+            <!-- VIDEO: controls, poster = thumbnail before play, muted+autoplay+loop for backgrounds -->
+            <h3>Video</h3>
+            <video width="400" controls poster="https://via.placeholder.com/400x225">
+                <source src="sample.mp4" type="video/mp4">
+                Your browser does not support video.
+            </video>
+
+            <!-- IFRAME: embed another page (YouTube, maps...).
+                 loading="lazy" defers it until scrolled into view. title = accessibility. -->
+            <h3>Embedded map (iframe)</h3>
+            <iframe title="Dhaka map" width="400" height="250" loading="lazy"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=90.3%2C23.7%2C90.5%2C23.9&amp;layer=mapnik">
+            </iframe>
+        </section>
+
+    </main>
+
+    <footer>
+        <!-- footer = closing content: copyright, links -->
+        <p>&copy; 2026 My Blog. Built with semantic HTML.</p>
+    </footer>
+
+    <!-- Next: 06_css_basics.html — HTML done, time to make it beautiful! -->
+</body>
+
+</html>

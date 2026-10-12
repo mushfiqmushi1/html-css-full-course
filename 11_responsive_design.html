@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- 11 - Responsive Design
+     Lesson: one site, every screen — media queries + fluid units.
+     TRY THIS: resize the browser window and watch the page adapt! -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Without this meta tag, phones render the DESKTOP layout zoomed out.
+         It's the single most important line for mobile. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 - Responsive Design</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: sans-serif; margin: 0; }
+
+        .hero {
+            background: #1e1e2e; color: white;
+            padding: 60px 24px; text-align: center;
+        }
+        .hero h1 { font-size: 2.5rem; margin: 0 0 12px; }
+
+        /* Fluid container: grows with the screen but never too wide */
+        .container {
+            width: min(100% - 32px, 1100px);
+            margin: 0 auto;
+            padding: 24px 0;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .card {
+            background: #f1f5f9; border-radius: 12px; padding: 24px;
+        }
+
+        .nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 24px; background: #7c3aed; color: white;
+        }
+        .nav .links { display: flex; gap: 20px; }
+        .nav a { color: white; text-decoration: none; }
+
+        /* ================= MEDIA QUERIES =================
+           Mobile-first approach: base styles = mobile,
+           then ADD complexity as the screen gets bigger.
+           (This demo is written desktop-first for contrast —
+            in your own projects, prefer mobile-first!) */
+
+        /* Tablet and below (≤ 768px) */
+        @media (max-width: 768px) {
+            .cards { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 2rem; }
+            .hero { padding: 40px 16px; }
+        }
+
+        /* Phone (≤ 480px) */
+        @media (max-width: 480px) {
+            .cards { grid-template-columns: 1fr; }  /* stack vertically */
+            .nav .links { display: none; }           /* hide links on tiny screens */
+            .hero h1 { font-size: 1.6rem; }
+        }
+
+        /* ============ RESPONSIVE UNITS cheat sheet ============ */
+        .units-demo p { background: #fef3c7; padding: 8px; border-radius: 6px; }
+        .u-px  { font-size: 16px; }   /* fixed — doesn't scale */
+        .u-rem { font-size: 1rem; }   /* scales with root font-size */
+        .u-vw  { font-size: 4vw; }    /* scales with viewport width */
+        .u-clamp { font-size: clamp(1rem, 2.5vw, 2rem); }
+        /* clamp(MIN, PREFERRED, MAX) — fluid type with guardrails. Gold! */
+
+        /* Responsive images: never overflow their container */
+        img { max-width: 100%; height: auto; display: block; }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <strong>MySite</strong>
+        <div class="links"><a href="#">Home</a><a href="#">About</a><a href="#">Contact</a></div>
+        <span>☰</span>
+    </nav>
+
+    <div class="hero">
+        <h1>Responsive by default</h1>
+        <p>Resize this window: 3 columns → 2 → 1. Nav links hide on phones.</p>
+    </div>
+
+    <div class="container">
+        <div class="cards">
+            <div class="card"><h3>Card 1</h3><p>Grid + media queries handle the layout.</p></div>
+            <div class="card"><h3>Card 2</h3><p>No JavaScript needed for any of this.</p></div>
+            <div class="card"><h3>Card 3</h3><p>Try it on your phone too.</p></div>
+        </div>
+
+        <h2>Responsive units</h2>
+        <div class="units-demo">
+            <p class="u-px">16px — fixed size, never changes</p>
+            <p class="u-rem">1rem — follows the root font size</p>
+            <p class="u-vw">4vw — grows/shrinks with the window (resize me!)</p>
+            <p class="u-clamp">clamp(1rem, 2.5vw, 2rem) — fluid but never too small/big</p>
+        </div>
+
+        <h2>Responsive image</h2>
+        <img src="https://via.placeholder.com/1200x400" alt="Wide demo image">
+        <p><code>max-width: 100%; height: auto;</code> — the two lines that
+           stop images breaking mobile layouts.</p>
+    </div>
+
+    <p style="text-align:center"><strong>Key takeaways:</strong> viewport meta is mandatory;
+       design mobile-first; use clamp() for fluid type; test by resizing.</p>
+
+    <!-- Next: 12_transitions_animations.html -->
+</body>
+
+</html>

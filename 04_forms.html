@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- 04 - Forms
+     Lesson: the building blocks of every login, signup & contact form. -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 - Forms</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 20px; }
+        label { display: block; margin-top: 12px; font-weight: bold; }
+        input, select, textarea { margin-top: 4px; padding: 6px; width: 100%; box-sizing: border-box; }
+        input[type="checkbox"], input[type="radio"] { width: auto; }
+        button { margin-top: 16px; padding: 8px 20px; }
+    </style>
+</head>
+
+<body>
+
+    <h1>Forms</h1>
+
+    <!-- form wraps all inputs. action = where data goes, method = how (GET/POST).
+         For now action="#" means "go nowhere" — backend comes later. -->
+    <form action="#" method="post">
+
+        <!-- LABEL + INPUT: always pair them with matching for/id.
+             Clicking the label focuses the input (accessibility win). -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"
+               placeholder="e.g. mushi123" required>
+        <!-- required = browser blocks empty submit. name = key sent to the server. -->
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"
+               placeholder="you@example.com" required>
+        <!-- type="email" gives free validation: must look like an email -->
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"
+               minlength="6" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="1" max="120">
+
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" name="birthday">
+
+        <label for="color">Favorite color:</label>
+        <input type="color" id="color" name="color" value="#7c3aed">
+
+        <!-- CHECKBOX: many can be checked. RADIO: one per group (same name). -->
+        <label>Skills (checkbox — pick many):</label>
+        <input type="checkbox" id="html" name="skills" value="html" checked>
+        <label for="html" style="display:inline">HTML</label>
+        <input type="checkbox" id="css" name="skills" value="css">
+        <label for="css" style="display:inline">CSS</label>
+
+        <label>Level (radio — pick one):</label>
+        <input type="radio" id="beginner" name="level" value="beginner" checked>
+        <label for="beginner" style="display:inline">Beginner</label>
+        <input type="radio" id="advanced" name="level" value="advanced">
+        <label for="advanced" style="display:inline">Advanced</label>
+
+        <!-- SELECT: dropdown. <optgroup> groups options. -->
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+            <option value="">-- choose --</option>
+            <optgroup label="Asia">
+                <option value="bd" selected>Bangladesh</option>
+                <option value="in">India</option>
+            </optgroup>
+            <optgroup label="Other">
+                <option value="us">USA</option>
+            </optgroup>
+        </select>
+
+        <!-- TEXTAREA: multi-line text -->
+        <label for="bio">Bio:</label>
+        <textarea id="bio" name="bio" rows="4"
+                  placeholder="Tell us about yourself..."></textarea>
+
+        <!-- FILE upload -->
+        <label for="avatar">Profile picture:</label>
+        <input type="file" id="avatar" name="avatar" accept="image/*">
+
+        <!-- BUTTONS: submit sends the form, reset clears it, button does nothing by itself -->
+        <button type="submit">Sign Up</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <hr>
+
+    <h2>Fieldset &amp; legend: group related inputs</h2>
+    <form action="#">
+        <fieldset>
+            <legend>Login</legend>
+            <label for="l-email">Email:</label>
+            <input type="email" id="l-email" required>
+            <label for="l-pass">Password:</label>
+            <input type="password" id="l-pass" required>
+            <button type="submit">Log in</button>
+        </fieldset>
+    </form>
+
+    <p><strong>Key takeaways:</strong> always pair label+input via for/id,
+       use the right input type (email, number, date...), name attributes
+       carry the data, required/minlength give free validation.</p>
+
+    <!-- Next: 05_semantic_and_media.html -->
+</body>
+
+</html>
